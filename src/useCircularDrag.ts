@@ -32,7 +32,7 @@ export function useCircularDrag(ref: RefObject<SVGElement | null>) {
 			if (!ref.current) return
 			removeStartListeners(ref.current, handleStart)
 		}
-	}, [ref])
+	}, [ref, handleStart]);
 
 	useEffect(() => {
 		if (!isDragging) return
@@ -40,7 +40,7 @@ export function useCircularDrag(ref: RefObject<SVGElement | null>) {
 		return () => {
 			removeListeners(handleMove, handleEnd)
 		}
-	}, [isDragging])
+	}, [isDragging, handleEnd])
 
 	return { isDragging }
 }
